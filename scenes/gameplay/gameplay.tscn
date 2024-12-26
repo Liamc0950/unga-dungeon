@@ -4,21 +4,21 @@
 [ext_resource type="MeshLibrary" uid="uid://bm778vhamx7bl" path="res://assets/meshlibraries/tilemesh.meshlib" id="2_xhaqi"]
 [ext_resource type="PackedScene" uid="uid://y20neyo1q3yh" path="res://scenes/player/player.tscn" id="3_urib0"]
 [ext_resource type="Script" path="res://scenes/gameplay/gameplay.gd" id="5"]
-[ext_resource type="Texture2D" uid="uid://gwhij3eha8ge" path="res://assets/001_iso_dungeon.png" id="5_3d03j"]
+[ext_resource type="Texture2D" uid="uid://cphmptn80ptxi" path="res://assets/001_iso_dungeon.png" id="5_3d03j"]
 [ext_resource type="Shader" path="res://scenes/gameplay/depth-based-edge-detection.gdshader" id="5_4g314"]
 [ext_resource type="Shader" path="res://scenes/gameplay/normal-based-edge-detection.gdshader.gdshader" id="6_5kpi6"]
 [ext_resource type="Shader" path="res://scenes/gameplay/combined_edge_detection.gdshader" id="7_7ydwy"]
 [ext_resource type="Shader" path="res://scenes/gameplay/noise-overlay-spatial.gdshader" id="7_jlsjr"]
 [ext_resource type="ButtonGroup" uid="uid://c5gisxvhyko7o" path="res://shader_button_group.tres" id="7_siv8a"]
 [ext_resource type="Shader" path="res://scenes/gameplay/noise-overlay.gdshader" id="7_vcbxo"]
-[ext_resource type="Texture2D" uid="uid://bj4qxkfo15kpe" path="res://assets/blue_noise.png" id="8_d0fdh"]
-[ext_resource type="Texture2D" uid="uid://x1dj80mo56de" path="res://assets/dither-textures/cross_hatch-B.png" id="10_2y6mc"]
-[ext_resource type="Texture2D" uid="uid://btbyvrd1xs2kh" path="res://assets/dither-textures/cross_hatch-G.png" id="11_oilkb"]
+[ext_resource type="Texture2D" uid="uid://tgl8e5w5k2ki" path="res://assets/blue_noise.png" id="8_d0fdh"]
+[ext_resource type="Texture2D" uid="uid://dowxdsociwbon" path="res://assets/dither-textures/cross_hatch-B.png" id="10_2y6mc"]
+[ext_resource type="Texture2D" uid="uid://bi2elr2jixblo" path="res://assets/dither-textures/cross_hatch-G.png" id="11_oilkb"]
 [ext_resource type="Shader" path="res://scenes/gameplay/shadow_hatching.gdshader" id="11_vcdlo"]
-[ext_resource type="Texture2D" uid="uid://bo1vtxlncdpl2" path="res://assets/dither-textures/cross_hatch-R.png" id="12_d5jnh"]
-[ext_resource type="Texture2D" uid="uid://b7vfcf4xs8ouh" path="res://assets/color-textures/1bit-monitor-glow-1x.png" id="14_ne521"]
+[ext_resource type="Texture2D" uid="uid://bw4vo836xw7mn" path="res://assets/dither-textures/cross_hatch-R.png" id="12_d5jnh"]
+[ext_resource type="Texture2D" uid="uid://dfjkotfknlcgf" path="res://assets/color-textures/1bit-monitor-glow-1x.png" id="14_ne521"]
 [ext_resource type="Shader" path="res://scenes/gameplay/dither_gradient.gdshader" id="15_c1hg0"]
-[ext_resource type="Texture2D" uid="uid://cxr47kdoh5rld" path="res://assets/dither-textures/LDR_LLL1_0.png" id="15_q0jpy"]
+[ext_resource type="Texture2D" uid="uid://d1ck2lxkjbw4v" path="res://assets/dither-textures/LDR_LLL1_0.png" id="15_q0jpy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_oi55u"]
 sky_top_color = Color(0.384314, 0.454902, 0.54902, 1)
@@ -38,7 +38,7 @@ glow_enabled = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jqevb"]
 render_priority = 0
 shader = ExtResource("5_4g314")
-shader_parameter/edge_threshold = 0.1
+shader_parameter/edge_threshold = 0.02
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/background_color = Color(0, 0, 0, 1)
 
@@ -188,6 +188,7 @@ size = 6.0
 
 [node name="DepthSobelShader" type="MeshInstance3D" parent="Shaders"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.301)
+visible = false
 cast_shadow = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_8kkb1")
@@ -326,10 +327,9 @@ text = "Camera"
 
 [node name="CameraOptionButton" type="OptionButton" parent="UI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Isometric"
-popup/item_0/id = 0
 popup/item_1/text = "Side View"
 popup/item_1/id = 1
 
